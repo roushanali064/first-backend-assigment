@@ -41,4 +41,10 @@ userSchema.pre('save', async function(next){
     next()
 })
 
+userSchema.post('save', function(doc,next){
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    doc.password = '';
+    next()
+})
+
 export const user = model<TUser>('user',userSchema)
