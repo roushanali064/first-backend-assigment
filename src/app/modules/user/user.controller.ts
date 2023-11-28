@@ -9,7 +9,7 @@ const createUser = async (req: Request, res: Response)=>{
         const result = await userService.createUserIntoDB(zodParseData)
         res.status(200).json({
             success: true,
-            message: 'user is create successfully',
+            message: 'User created successfully!',
             data: result,
           })
 
@@ -23,6 +23,26 @@ const createUser = async (req: Request, res: Response)=>{
     }
 }
 
+const findSingleUser = async (req: Request, res: Response) =>{
+    try{
+        const result = await userService.allUsers();
+        res.status(200).json({
+            success: true,
+            message: 'Users fetched successfully!',
+            data: result,
+          })
+    }catch(err){
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message:'something went wrong',
+            error: err,
+          });
+    }
+
+}
+
 export const userController = {
-    createUser
+    createUser,
+    findSingleUser
 }

@@ -7,6 +7,12 @@ const createUserIntoDB = (userData: TUser)=>{
     return result;
 }
 
+const allUsers = ()=>{
+    const result = user.find();
+    return result;
+}
+
 export const userService = {
-    createUserIntoDB
+    createUserIntoDB,
+    allUsers
 }
