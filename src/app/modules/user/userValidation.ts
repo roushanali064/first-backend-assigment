@@ -19,12 +19,13 @@ const userValidationSchema = z.object({
     age: z.number().min(1, {message: 'age is required'}),
     email: z.string().email({message: 'this is not valid il'}),
     hobbies: z.array(z.string().min(1,{message: 'hobbies is required'})),
+    isActive: z.boolean(),
     address: addressValidationSchema,
     orders: z.array(z.object({
         productName: z.string(),
         price: z.number(),
         quantity: z.number()
-    }).optional()).optional()
+    })).optional()
 })
 
 export default userValidationSchema
