@@ -43,8 +43,14 @@ userSchema.pre('save', async function(next){
 
 userSchema.post('save', function(doc,next){
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    doc.password = '';
+    doc.set("password", undefined)
     next()
 })
+
+ userSchema.post('find', function(doc,next){
+      const [users] = doc
+      users.password = undefined
+     next()
+ })
 
 export const user = model<TUser>('user',userSchema)

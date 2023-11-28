@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { userService } from "./user.service";
 import userValidationSchema from "./userValidation";
 
+// create user
 const createUser = async (req: Request, res: Response)=>{
     try{
         const userData = req.body
@@ -23,7 +24,8 @@ const createUser = async (req: Request, res: Response)=>{
     }
 }
 
-const findSingleUser = async (req: Request, res: Response) =>{
+// find all user
+const findAllUsers = async (req: Request, res: Response) =>{
     try{
         const result = await userService.allUsers();
         res.status(200).json({
@@ -42,7 +44,28 @@ const findSingleUser = async (req: Request, res: Response) =>{
 
 }
 
+// find single user
+const findSingleUser = async (req:Request, res: Response) =>{
+    try{
+        const {userId} = req.params
+        const result = await userService.singleUser(userId);
+        res.status(200).json({
+            success: true,
+            message: 'Users fetched successfully!',
+            data: result,
+          })
+    }catch(err){
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message:'something went wrong',
+            error: err,
+          });
+    }
+}
+
 export const userController = {
     createUser,
-    findSingleUser
+    findSingleUser,
+    findAllUsers
 }
