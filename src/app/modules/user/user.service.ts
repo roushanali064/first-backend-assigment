@@ -22,7 +22,13 @@ const singleUser = (userId: string) =>{
 
 // update user
 const updateUserIntoDB = (updateData: TUser, userId: string) =>{
-    const result = user.findOneAndUpdate({userId},updateData,{password:0})
+    const result = user.findOneAndUpdate({userId},updateData,{projection:{password:0}})
+    return result
+}
+
+// delete user
+const deleteUserIntoDB = (userId: string) =>{
+    const result = user.deleteOne({userId})
     return result
 }
 
@@ -30,5 +36,6 @@ export const userService = {
     createUserIntoDB,
     allUsers,
     singleUser,
-    updateUserIntoDB
+    updateUserIntoDB,
+    deleteUserIntoDB
 }
