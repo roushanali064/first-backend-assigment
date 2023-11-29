@@ -34,6 +34,8 @@ const userSchema = new Schema<TUser>({
     orders: {type: ordersSchema},
 })
 
+// middleware
+
 userSchema.pre('save', async function(next){
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const user = this
@@ -47,10 +49,14 @@ userSchema.post('save', function(doc,next){
     next()
 })
 
- userSchema.post('find', function(doc,next){
-      const [users] = doc
-      users.password = undefined
-     next()
- })
+userSchema.pre('findOneAndUpdate', async function(next){
+    const userData: any = this.getUpdate()
+    if(userData.password){
+        userData.password = await bcrypt.hash(userData.password,Number(config.bcrypt_salt_round))
+    }
+    next()
+})
+
+
 
 export const user = model<TUser>('user',userSchema)
