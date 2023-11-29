@@ -183,6 +183,35 @@ const retrieveAllOrders =async (req:Request, res:Response) => {
   
 }
 
+// total price
+const totalPrice =async (req:Request, res:Response) => {
+  try{
+    const {userId} = req.params;
+    const result = await userService.totalPriceIntoDb(userId);
+    console.log(result);
+    if(result.length > 0){
+      res.status(200).json({
+        success: true,
+        message: "Order fetched successfully!",
+        data : result[0]
+      })
+    }else{
+      res.status(200).json({
+        success: true,
+        message: "Order fetched successfully!",
+        data : {totalPrice:0}
+      })
+    }
+  }catch(err){
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: 'something went wrong',
+      error: err,
+    });
+  }
+}
+
 export const userController = {
   createUser,
   findSingleUser,
@@ -190,5 +219,6 @@ export const userController = {
   updateUser,
   deleteUSer,
   addOrder,
-  retrieveAllOrders
+  retrieveAllOrders,
+  totalPrice
 };

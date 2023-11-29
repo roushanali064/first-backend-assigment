@@ -55,6 +55,40 @@ const allOrdersIntoDB =async (userId:string) => {
     }
 }
 
+const totalPriceIntoDb =async (userId:string) => {
+    const result = await user.aggregate(
+        // pipeline 1
+        [
+            // stage 1
+            {
+                $match: {
+                    userId: Number(userId),
+                    orders: {$ne: []}
+                }
+            },
+            // stage 2
+            {
+                $unwind:'$orders'
+            },
+            // stage 3
+            {
+                $group:{
+                    _id: '_id',
+                    totalPrice:{
+                        $sum:{$multiply:['$orders.price','$orders.quantity']}
+                    }
+                }
+            },
+            // stage 4
+            {
+                $project:{_id: 0, totalPrice: 1}
+            }
+
+        ]
+    )
+    return result
+}
+
 export const userService = {
     createUserIntoDB,
     allUsers,
@@ -62,5 +96,6 @@ export const userService = {
     updateUserIntoDB,
     deleteUserIntoDB,
     addOrderIntoDB,
-    allOrdersIntoDB
+    allOrdersIntoDB,
+    totalPriceIntoDb
 }
