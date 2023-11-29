@@ -9,5 +9,6 @@ router.get('/:userId', userController.findSingleUser)
 router.put('/:userId', userController.updateUser)
 router.delete('/:userId', userController.deleteUSer)
 router.put('/:userId/orders', userController.addOrder)
+router.get('/:userId/orders', userController.retrieveAllOrders)
 
 export const userRoute = router;

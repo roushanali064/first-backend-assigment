@@ -161,11 +161,34 @@ const addOrder = async (req: Request, res: Response) =>{
 
 }
 
+// retrieve all orders
+const retrieveAllOrders =async (req:Request, res:Response) => {
+  try{
+    const {userId} = req.params
+    const result = await userService.allOrdersIntoDB(userId)
+    
+    res.status(200).json({
+      success: true,
+      message: "Order fetched successfully!",
+      data : result
+    })
+  }catch(err){
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: 'something went wrong',
+      error: err,
+    });
+  }
+  
+}
+
 export const userController = {
   createUser,
   findSingleUser,
   findAllUsers,
   updateUser,
   deleteUSer,
-  addOrder
+  addOrder,
+  retrieveAllOrders
 };

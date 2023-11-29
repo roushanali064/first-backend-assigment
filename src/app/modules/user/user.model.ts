@@ -13,13 +13,13 @@ const addressSchema = new Schema<TAddress>({
     street: {type: String, required: [true, 'street is required']},
     country: {type: String, required: [true, 'country is required']}
 })
-const ordersSchema = new Schema<TOrders>([
+const ordersSchema = new Schema<TOrders>(
     {
         productName: {type: String},
         price: {type: Number},
         quantity: {type: Number}
     }
-])
+)
 
 const userSchema = new Schema<TUser>({
     userId: {type: Number, required: [true, 'user id is required'], unique: true},
@@ -31,7 +31,7 @@ const userSchema = new Schema<TUser>({
     isActive: {type: Boolean, required: true,},
     hobbies: {type: [String], required: [true, 'hobbies is required']},
     address:{type: addressSchema},
-    orders: {type: ordersSchema},
+    orders: {type: [ordersSchema]},
 })
 
 // middleware

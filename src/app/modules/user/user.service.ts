@@ -10,19 +10,19 @@ const createUserIntoDB = (userData: TUser)=>{
 
 // get all user
 const allUsers = ()=>{
-    const result = user.find({},{password:0});
+    const result = user.find({},{password:0, orders: 0});
     return result;
 }
 
 // get single user
 const singleUser = (userId: string) =>{
-    const result = user.findOne({userId},{password:0})
+    const result = user.findOne({userId},{password:0, orders: 0})
     return result
 }
 
 // update user
 const updateUserIntoDB = (updateData: TUser, userId: string) =>{
-    const result = user.findOneAndUpdate({userId},updateData,{projection:{password:0}})
+    const result = user.findOneAndUpdate({userId},updateData,{projection:{password:0, orders:0}})
     return result
 }
 
@@ -45,11 +45,22 @@ const addOrderIntoDB = async (userId: string, orders: TOrders) =>{
     return result
 }
 
+// retrieve all orders
+const allOrdersIntoDB =async (userId:string) => {
+    const result = await user.findOne({$and:[{userId},{orders:{$ne: []}}]},{orders:1,_id: 0})
+    if(result && result.orders){
+        return result
+    }else{
+        return "You don't order anything"
+    }
+}
+
 export const userService = {
     createUserIntoDB,
     allUsers,
     singleUser,
     updateUserIntoDB,
     deleteUserIntoDB,
-    addOrderIntoDB
+    addOrderIntoDB,
+    allOrdersIntoDB
 }
