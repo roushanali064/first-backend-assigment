@@ -138,10 +138,34 @@ const deleteUSer = async (req: Request, res: Response) =>{
   }
 }
 
+// add order
+const addOrder = async (req: Request, res: Response) =>{
+  try{
+    const {userId} = req.params;
+    const orderData = req.body;
+    const result = await userService.addOrderIntoDB(userId,orderData);
+    console.log(result);
+    res.status(200).json({
+      success: true,
+      message: "Order created successfully!",
+      data : null
+    })
+  }catch(err){
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: 'something went wrong',
+      error: err,
+    });
+  }
+
+}
+
 export const userController = {
   createUser,
   findSingleUser,
   findAllUsers,
   updateUser,
-  deleteUSer
+  deleteUSer,
+  addOrder
 };
