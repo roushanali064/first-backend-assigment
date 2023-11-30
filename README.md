@@ -43,27 +43,31 @@ Before you begin, ensure that you have the following installed on your machine:
 
 ## Running the Application
 
-### Development Mode
-
+1. Development Mode
     ```bash
     npm run start:dev
 
+2. Production Mode
 
-## Table of Contents
+    ```bash
+    npm run build
+    npm run start:prod
 
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
-- [Usage](#usage)
-  - [Development Mode](#development-mode)
-  - [Production Mode](#production-mode)
-- [Testing](#testing)
-- [Code Quality](#code-quality)
-  - [Linting](#linting)
-  - [Code Formatting](#code-formatting)
-- [Contributing](#contributing)
-- [License](#license)
+## Code Quality
+
+1. linting
+
+    ```bash
+    npm run lint
+    //to automatic fixed lint issues use
+    npm run lint:fix
 
 
+## Code Formatting
 
+1. Prettier
+
+    ```bash
+    npm run prettier
+    To automatically fix formatting issues
+    npm run prettier:fix
