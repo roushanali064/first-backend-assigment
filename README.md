@@ -1,6 +1,26 @@
 # User Management
 
-Description of your project.
+## Overview
+
+User management is a Node.js application built with TypeScript, Express, and MongoDB. This guide provides instructions on setting up and running the application locally.
+
+## Prerequisites
+
+Before you begin, ensure that you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/) (version 14 or later)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [MongoDB](https://www.mongodb.com/) (Ensure MongoDB is installed and the server is running)
+- [express](https://expressjs.com/)
+- [typeScript](https://www.typescriptlang.org/)
+- [mongooes](https://mongoosejs.com/)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/project-name.git
 
 ## Table of Contents
 
@@ -22,17 +42,4 @@ Description of your project.
 
 Explain how to set up the project locally.
 
-### Prerequisites
 
-List any software or tools that need to be installed before setting up the project.
-
-- [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/)
-- [MongoDB](https://www.mongodb.com/)
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/project-name.git
