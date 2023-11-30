@@ -33,6 +33,14 @@ Before you begin, ensure that you have the following installed on your machine:
     ```bash
     npm install
 
+### Configuration
+
+1. Create a .env file
+
+    ```bash
+    PORT=3000
+    MONGODB_URI=mongodb://localhost:27017/assignment2
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
