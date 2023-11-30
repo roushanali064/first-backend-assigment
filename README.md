@@ -24,9 +24,13 @@ Before you begin, ensure that you have the following installed on your machine:
    git clone https://github.com/roushanali064/user-management-backend.git
 
 2. Navigate to the project folder
+
+    ```bash
     cd user-management-backend
 
 3. Install dependencies
+
+    ```bash
     npm install
 
 ## Table of Contents
