@@ -38,8 +38,16 @@ Before you begin, ensure that you have the following installed on your machine:
 1. Create a .env file
 
     ```bash
-    PORT=3000
+    PORT=5000
     MONGODB_URI=mongodb://localhost:27017/assignment2
+
+## Running the Application
+
+### Development Mode
+
+    ```bash
+    npm run start:dev
+
 
 ## Table of Contents
 
