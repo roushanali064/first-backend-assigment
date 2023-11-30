@@ -6,7 +6,7 @@ User management is a Node.js application built with TypeScript, Express, and Mon
 
 ## Getting Started
 
-Explain how to set up the project locally.
+Setup the project locally follow the instruction
 
 ## Prerequisites
 
@@ -22,6 +22,12 @@ Before you begin, ensure that you have the following installed on your machine:
 
    ```bash
    git clone https://github.com/roushanali064/user-management-backend.git
+
+2. Navigate to the project folder
+    cd user-management-backend
+
+3. Install dependencies
+    npm install
 
 ## Table of Contents
 
