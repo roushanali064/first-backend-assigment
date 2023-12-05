@@ -144,7 +144,6 @@ const addOrder = async (req: Request, res: Response) =>{
     const {userId} = req.params;
     const orderData = req.body;
     const result = await userService.addOrderIntoDB(userId,orderData);
-    console.log(result);
     res.status(200).json({
       success: true,
       message: "Order created successfully!",

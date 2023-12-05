@@ -13,7 +13,7 @@ const addressValidationSchema = z.object({
 
 const userValidationSchema = z.object({
     userId: z.number().min(1,{message: 'user id is required'}),
-    userName: z.string().min(1,{message: 'userName is required'}),
+    username: z.string().min(1,{message: 'userName is required'}),
     password: z.string().min(5,{message: 'password is required and minimum 5 character'}),
     fullName: userNameValidationSchema,
     age: z.number().min(1, {message: 'age is required'}),
